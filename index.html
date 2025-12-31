@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi primera página</title>
-    <style>
-        body {
-            background: #111;
-            color: white;
-            font-family: Arial;
-            text-align: center;
-            padding-top: 100px;
-        }
-        h1 { color: #00ffaa; }
-        p { font-size: 20px; }
-    </style>
+<meta charset="UTF-8">
+<title>Mini Editor de Código</title>
+<style>
+body {
+    background:#111;
+    color:white;
+    font-family: monospace;
+    text-align:center;
+}
+
+textarea {
+    width:90%;
+    height:200px;
+    background:#000;
+    color:#00ff99;
+    border:1px solid #00ff99;
+    padding:10px;
+}
+
+button {
+    margin:10px;
+    padding:10px 20px;
+    background:#00ff99;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+}
+
+iframe {
+    width:90%;
+    height:250px;
+    border:1px solid #00ff99;
+    background:white;
+}
+</style>
 </head>
+
 <body>
-    <h1>Hola mundo 🌎</h1>
-    <p>Esta es mi primera página web publicada en internet.</p>
+
+<h1>Mini Editor de Código</h1>
+
+<p>Escribí HTML, CSS o JavaScript:</p>
+
+<textarea id="code">
+<h2>Hola mundo</h2>
+<p>Esto corre dentro del navegador 😎</p>
+
+<script>
+alert("JS funcionando");
+</script>
+</textarea>
+
+<br>
+<button onclick="runCode()">Ejecutar</button>
+
+<h3>Resultado:</h3>
+<iframe id="output"></iframe>
+
+<script>
+function runCode(){
+    const code = document.getElementById("code").value;
+    const frame = document.getElementById("output");
+    frame.srcdoc = code;
+}
+</script>
+
 </body>
 </html>
